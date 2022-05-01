@@ -1,0 +1,294 @@
+body{
+    background-color: #f2f2fb;
+}
+
+*{
+    font-family: sans-serif;
+    
+}
+.side-bar{
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #0f123f; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px; 
+}
+
+.heading{
+    margin-bottom: 15px;
+    color: #0f123f;
+}
+
+.heading-dashboard{
+    margin-left: 10px;
+    padding-top:10px ;
+    color: #0f123f;
+    font-weight: bold;
+}
+
+.side-bar .head{
+    color: rgb(255, 255, 255);
+    margin-left: 26px;
+}
+
+.side-bar .links-sidebar{
+    margin-left: 8px;
+}
+
+.side-bar .link-sidebar{
+    width: 90%;
+    margin: 2px;
+    padding:2px;
+    border-radius: 5px;
+    transition: padding 0.5s ease,all 0.5s linear;
+}
+
+.side-bar .link-sidebar:hover{
+    background: linear-gradient(90deg, #ff6b6a 0%, #fd8383 69%, #fe9898 100%);
+    padding-left: 20px;
+}
+
+.logout-link{
+    position:relative;
+    top: 210px;
+    left: 3px;
+}
+.side-bar a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffffff;
+    display: block;
+}
+
+.box-data{
+    width: 160px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    color: white;
+    margin-bottom: 18px;
+    transition: width 0.7s ease, height 0.7s ease, padding 0.7s ease;
+
+}
+
+.box-data .box-data-word{
+    width: 83px;
+    height: 31px;
+    font-size: 12px;
+    position: relative;
+    bottom: 55px;
+    left: 71px;
+    text-align: center;
+    color: #b5afaf;
+    
+}
+.box-data .icon-div{
+    background: linear-gradient(90deg, #0f123f 0%, #292c4d 69%, #37373f 100%);
+    width: 67px;
+    height: 67px;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 50%;
+    font-size: 30px;
+    padding: 10px;
+    position: relative;
+    top: 17px;
+    left: -42px;
+}
+
+.box-data .box-data-number{
+    width: 67px;
+    height: 53px;
+    font-size: 25px;
+    position: relative;
+    bottom: 57px;
+    left: 80px;
+    text-align: center;
+    margin-top: 5px;
+    color: black;
+}
+
+table{
+    table-layout: fixed;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+.phrase-hello{
+   color:#ff6b6a;
+}
+
+.phrase-name{
+    color:#ff2323;
+}
+
+progress {
+    -webkit-appearance: none;
+    color:red;
+ }
+ progress::-webkit-progress-value {
+   -webkit-appearance: none;
+   background: orangered;
+ }
+
+.span-posi1{
+    position: relative;
+    top: -10px;
+    font-weight: bold;
+}
+
+.span-posi2{
+    position: relative;
+    top: 10px;
+    right: 106px;
+    font-size: 13px;
+    color: #c4c4c4;;
+}
+/* end */
+
+/* projects page */
+
+
+.hover-body:hover{
+    background-color: rgb(221, 219, 219);
+}
+
+/* end project page */
+
+/* add project */
+
+.form{
+    background-color: rgba(230, 230, 230, 0.425);
+}
+
+/* end */
+
+/* users page */
+
+.image{
+    transition: opacity 0.6s ease;
+
+}
+
+.image:hover{
+    opacity: 0.3;
+}
+
+/* end */
+
+/* project page */
+
+.task-data{
+    width: 282px;
+    height:fit-content;
+    border-radius: 20px;
+    transition: width 0.7s ease,height 0.7s ease,padding 0.7s ease,background-color 0.7s ease;
+    border: 1px solid #e6e6e687;
+    margin-bottom: 10px;
+}
+
+.task-data:hover{
+    width: 300px;
+    padding-left: 10px;
+    background-color: #aaaaaa87;
+}
+
+.task-data .task-name{
+    font-size: 20px;
+}
+
+.task-data .task-user{
+    margin-left: 6px;
+    margin-top: 6px;
+}
+.task-data .task-user .e-mail{
+    font-size: 13px;
+    display: block;
+}
+
+.task-data .task-created{
+   margin: 4px;
+}
+.task-data .task-deadline{
+    margin: 4px;
+}
+
+.task-data .phase{
+    margin-top:15px;
+}
+
+.bg-success-me{
+    background-color: rgb(0, 255, 13);
+}
+
+/* end */
+
+/* landing page */
+.pull-right{
+    margin-left: 444px;
+}
+
+.navbar-dark .navbar-brand{
+    font-weight: bold;
+    transition: color 0.7s ease;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover , .navbar-dark .navbar-nav .show > .nav-link:hover {
+    background-color: #ff0000;
+    color: black;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    transition: background-color 0.7s ease , color 0.7s ease;
+}
+
+.navbar-dark .navbar-brand:hover {
+    color: rgba(255, 0, 0, 0.9);
+}
+
+.pull-right-2{
+    margin-left: 100px;
+}
+
+.carousel-head{
+    font-weight: bold;
+    color: rgb(255, 255, 255)  !important;
+}
+
+.carousel-par{
+    font-size: 20px;
+}
+
+.features{
+    padding: 40px;
+    background-color: rgb(209, 209, 209);
+    line-height: 30px;
+    font-size: 18px;
+    color: black;
+}
+.features h3{
+    color: red;
+}
+/* end */
+/* users page */
+
+.user-image{
+    width: 300px;
+    height: 250px;
+    margin-top: 40px;
+    margin-left:40px;
+}
+
+.med{
+    position: relative;
+    top: 50%;
+}
+/* end */
