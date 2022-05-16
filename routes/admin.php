@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DownloadController;
 // use App\Http\Middleware\CheckAdmin;
 
 /*
@@ -24,6 +25,8 @@ Route::middleware('isAdmin')->group(function(){
     Route::get('/tasks/{id}', [AdminController::class,'tasks']);
 
     Route::get('/email/{id}',[AdminController::class , 'email']);
+
+    Route::get('/download/{filename}',[DownloadController::class , 'download']);
 
     Route::resource('/user',UserController::class);
 });

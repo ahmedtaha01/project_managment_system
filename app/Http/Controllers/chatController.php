@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use App\Models\Chat;
 use Illuminate\Support\Facades\Auth;
 
@@ -45,7 +46,7 @@ class chatController extends Controller
             'user_id' => auth()->user()->id,
         ]);
 
-        return redirect("/task/".$request->input('taskId'));
+        return redirect("/task/".Crypt::encrypt($request->input('taskId')));
     }
 
     /**

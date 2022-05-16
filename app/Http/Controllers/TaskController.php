@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Crypt;
 use App\Models\Task;
 use App\Models\Chat;
 
@@ -70,12 +71,18 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Task $task)
+    public function show($id)
     {
+        $id = Crypt::decrypt($id);
+        $task = Task::findOrFail($id);
         $data = [
             'task' => $task,
         ];
-        return view('project.task',['data' => $data]);
+        if(auth()->user()->is_admin == '1'){
+            return view('project.task',['data' => $data]);
+        }
+
+        return view('project.front-pages.show-task',['data' => $data]);
     }
 
     /**
@@ -98,7 +105,31 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(empty($request->File)){
+            Task::where('id','=',$id)->update([
+                'phase'         => '1',
+            ]);
+
+            return redirect('task/'.Crypt::encrypt($id))->with('success','You have started this task');
+        } else {
+            $request->validate([
+                'File' => 'required|max:1024',
+            ]);
+            $ext = pathinfo($request->File->getClientOriginalName(), PATHINFO_EXTENSION); // to get any extension
+            
+            $fileName = 'file-'.time().'-task'.$id.'.'.$ext;
+            
+            Task::where('id','=',$id)->update([
+                'attachment'    => $fileName,
+                'phase'         => '2',
+            ]);
+    
+            $request->File->move(public_path('attachments'),$fileName);   
+            
+            return redirect('task/'.Crypt::encrypt($id))->with('success','File uploaded successfuly');
+        }
+        
+        
     }
 
     /**

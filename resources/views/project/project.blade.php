@@ -26,7 +26,7 @@
             <div class="row">
                 @forelse ($data['tasks'] as $task)
                 <div class="col-md-4 col-sm-12">
-                    <a href="/task/{{ $task->id }}" class="text-dark">
+                    <a href="/task/{{ Crypt::encrypt($task->id) }}" class="text-dark">
                         <div class="task-data fw-bold" style="background-color: white">
                             <div class="task-name text-center">
                                 {{ $task->name }}

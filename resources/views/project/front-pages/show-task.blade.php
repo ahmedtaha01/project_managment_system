@@ -1,6 +1,6 @@
-@extends('project.layouts.admin-layout')
+@extends('project.layouts.front-layout')
 
-@section('adminContent')
+@section('frontContent')
 <div class='container'>
     <div row='row'>
         <div class="col-sm-9 col-md-10 offset-sm-3 offset-md-2">
@@ -10,8 +10,16 @@
                 </h1>
                 <hr>
                 <h2>
-                    {{ $data['task']->name }} 
+                    {{ $data['task']->name }}
                 </h2>
+                @if ($data['task']->phase == '0')
+                    <form action="/task/{{ $data['task']->id }}" method="post">
+                        @csrf
+                        @method('PUT')
+                        <input class="form-control btn btn-primary" type="submit" value="Start Task">
+                    </form>    
+                @endif
+                
                 <hr>
                 <div class="task-user">
                     <img src="{{ $data['task']->user->image == null ? asset('images/profile/profile.png'): asset('images/profile/'.$data['task']->user->image) }}" alt="" width="50" height="40" style="border-radius: 50%;">
@@ -29,9 +37,34 @@
                     deadline : <span class="text-danger">{{ $data['task']->deadline }}</span> 
                 </div>
                 <div class="mt-4 mb-4">
-                    @if ($data['task']->attachment != null)
-                        attachments sent : <a class="btn btn-primary" href="/download/{{ $data['task']->attachment }}">Download</a>                        
+                    @if ($data['task']->attachment == null)
+                        <form class="form-control" action="/task/{{ $data['task']->id }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <input class="form-control" type="file" name="File">
+                            <input class="form-control btn btn-outline-primary mt-2" type="submit" value="Upload">
+                            
+                                @if ($errors->any())
+                                    @foreach ($errors->all() as $error)
+                                        <div class="bg-danger text-white text-center p-3 m-3">
+                                        {{ $error }}
+                                        </div>
+                                    @endforeach
+                                @endif
+                                @if($message = Session::get('success'))
+                                <div class="bg-success text-white text-center p-3 m-3">
+                                    <p>{{$message}}</p>
+                                </div>
+                                @endif
+                        </form>
+
+                    @else
+                        <div class="bg-success text-white text-center p-3 m-3">
+                            File hass been uploaded successfuly
+                        </div>
                     @endif
+                    
+                    
                 </div>
                 <div class="text-center phase mb-3">
                     @if ($data['task']->phase == '0')
@@ -48,14 +81,6 @@
                         </span> 
                     @endif
                 </div>
-                @if ($data['task']->phase != '2')
-                    <div class="text-center phase mt-3 mb-4">
-                        <a href="/email/{{ $data['task']->id }}" class="btn btn-primary text-center">
-                            send reminder
-                        </a>
-                    </div>    
-                @endif
-                
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-8 col-lg-6">
                         <div class="card shadow-0 border" style="background-color: #f0f2f5;">
@@ -96,4 +121,3 @@
     </div>    
 </div>
 @endsection
-    
