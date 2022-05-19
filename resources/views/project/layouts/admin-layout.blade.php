@@ -42,7 +42,7 @@
                     <div class="ml-3">
                       <form action="/logout" method="post">
                         @csrf
-                          <a href="#" class="link-sidebar logout-link"><h6 ><i class="fa-solid fa-arrow-turn-up"></i> <input type="submit" class="text-white fw-bold" value="LogOut" style="border:none;background-color:inherit"> </h6></a>
+                          <a class="link-sidebar logout-link"><h6 ><i class="fa-solid fa-arrow-turn-up"></i> <input type="submit" class="text-white fw-bold" value="LogOut" style="border:none;background-color:inherit"> </h6></a>
                       </form>
                     </div>
                 </div>

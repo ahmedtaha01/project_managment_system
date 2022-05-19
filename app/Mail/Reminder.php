@@ -16,11 +16,9 @@ class Reminder extends Mailable
      *
      * @return void
      */
-
-    public $data; 
-    public function __construct($data)
+    public function __construct()
     {
-        $this->data = $data;
+        //
     }
 
     /**
@@ -30,6 +28,6 @@ class Reminder extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.remind');
+        return $this->view('view.name');
     }
 }

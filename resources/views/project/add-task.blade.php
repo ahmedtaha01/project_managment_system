@@ -9,7 +9,7 @@
                 </div>
                 <form action="/task" method="post">
                     @csrf
-                    <div class="form p-3 rounded-3" style="background-color: white">
+                    <div class="form p-3 rounded-3 shadow-lg" style="background-color: white">
                         <label class="mb-2 fs-5">Task Name</label>
                         <input class="form-control" type="text" name="name">
                         <label class="mb-2 fs-5">Task Description</label>

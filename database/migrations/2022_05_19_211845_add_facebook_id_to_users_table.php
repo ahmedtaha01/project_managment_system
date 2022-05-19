@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAttachmentToTasksTable extends Migration
+class AddFacebookIdToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddAttachmentToTasksTable extends Migration
      */
     public function up()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->Text('attachment');
+        Schema::table('users', function (Blueprint $table) {
+            $table->Text('facebook_id');
         });
     }
 
@@ -25,8 +25,8 @@ class AddAttachmentToTasksTable extends Migration
      */
     public function down()
     {
-        Schema::table('tasks', function (Blueprint $table) {
-            $table->dropColumn('attachment');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('facebook_id');
         });
     }
 }

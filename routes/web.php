@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SocialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,5 +47,9 @@ Route::resource('/project',ProjectController::class);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/redirect/{service}',[SocialController::class,'redirect']);
+
+Route::get('/callback/{service}',[SocialController::class,'callback']);
 
 require __DIR__.'/auth.php';

@@ -16,7 +16,7 @@
                 <div class='row'>
                     <div class="col-lg-3">
                         <a href="/projects">
-                            <div class="box-data">
+                            <div class="box-data shadow-lg">
                                 <div class="icon-div">
                                     <i class="fa fa-project-diagram"></i> 
                                 </div>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-lg-3">
                         <a href="/tasks/2">
-                            <div class="box-data">
+                            <div class="box-data shadow-lg">
                                 <div class="icon-div">
                                     <i class="fa-solid fa-list-check icon"></i>
                                 </div>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="col-lg-3">
                         <a href="/tasks/0">
-                            <div class="box-data">
+                            <div class="box-data shadow-lg">
                                 <div class="icon-div">
                                     <i class="fa-solid fa-circle-pause icon"></i>
                                 </div>
@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-lg-3">
                         <a href="/tasks/1">
-                            <div class="box-data">
+                            <div class="box-data shadow-lg">
                                 <div class="icon-div">
                                     <i class="fa-solid fa-spinner icon"></i> 
                                 </div>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="col-lg-3">
                         <a href="/user">
-                            <div class="box-data">
+                            <div class="box-data shadow-lg">
                                 <div class="icon-div">
                                     <i class="fa-solid fa-users icon"></i> 
                                 </div>
@@ -93,7 +93,7 @@
     
                 <div class="row">
                     <div class="col-lg-12">
-                        <div style="background-color: white">
+                        <div class="shadow-lg" style="background-color: white">
                             <h3 class="heading-dashboard">
                                 Projects
                             </h3>

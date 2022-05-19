@@ -10,7 +10,7 @@
             <div class="row">
                 @forelse ($users as $user)
                     <div class="col-lg-4">
-                        <div class="card mb-3" style="width: 18rem;">
+                        <div class="card mb-3 shadow-lg" style="width: 18rem;">
                             <a href="/user/{{ $user->id }}">
                                 <img src="{{ ($user->image==null)? asset('images/profile/profile.png') : '/images/profile/'.$user->image }}" class="card-img-top image">
                             </a>

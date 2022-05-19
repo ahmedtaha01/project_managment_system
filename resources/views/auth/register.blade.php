@@ -46,14 +46,38 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
+                
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
-
-                <x-button class="ml-4">
+            
+                <x-button class="ml-4 float-right">
                     {{ __('Register') }}
                 </x-button>
             </div>
+            <div class="icons">
+                <div style="float: left;margin-left:4px" class="img">
+                    <a href="redirect/facebook">
+                        <img src="{{ asset('images/facebook.png') }}" alt="facebook logo" >
+                    </a>
+                </div>
+                <div style="float: left;margin-left:4px" class="img">
+                    <a  href="redirect/facebook">
+                        <img class="d-inline" src="{{ asset('images/google.png') }}" alt="facebook logo" >
+                    </a>
+                </div>
+                <div style="float: left;margin-left:4px" class="img">
+                    <a  href="redirect/facebook">
+                        <img class="d-inline" src="{{ asset('images/twitter.png') }}" alt="facebook logo" >
+                    </a>
+                </div>
+            </div>
+            
+            
+            
+            
+            
+            
         </form>
     </x-auth-card>
 </x-guest-layout>

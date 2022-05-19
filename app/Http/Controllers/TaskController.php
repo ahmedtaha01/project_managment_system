@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\Task;
 use App\Models\Chat;
-
+use App\Models\User;
 
 class TaskController extends Controller
 {
@@ -109,6 +109,9 @@ class TaskController extends Controller
             Task::where('id','=',$id)->update([
                 'phase'         => '1',
             ]);
+            User::where('id','=',auth()->user()->id)->update([
+                'current_task'         => $id,
+            ]);
 
             return redirect('task/'.Crypt::encrypt($id))->with('success','You have started this task');
         } else {
@@ -122,6 +125,13 @@ class TaskController extends Controller
             Task::where('id','=',$id)->update([
                 'attachment'    => $fileName,
                 'phase'         => '2',
+            ]);
+
+            $numOfTasks = DB::table('users')->select('number_of_tasks')->where('id','=',auth()->user()->id)->first();
+            $numOfTasks = $numOfTasks->number_of_tasks +1;
+            User::where('id','=',auth()->user()->id)->update([
+                'number_of_tasks'   => $numOfTasks,
+                'current_task'      => null,
             ]);
     
             $request->File->move(public_path('attachments'),$fileName);   

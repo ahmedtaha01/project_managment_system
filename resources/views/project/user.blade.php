@@ -19,7 +19,12 @@
                             <label class="mt-2 mb-1" for="">E-mail : </label> {{ $user['email'] }} <hr>
                             <label class="mt-2 mb-1" for="">Position : </label> {{ $user['position'] }} <hr>
                             <label class="mt-2 mb-1" for="">Number Of Tasks : </label> {{ $user['number_of_tasks'] }} <hr>
-                            <label class="mt-2 mb-1" for="">Current Task : </label> link <hr>
+                            <label class="mt-2 mb-1" for="">Current Task : </label>
+                            @if ($user['current_task'] != null)
+                                <a href="/task/{{ Crypt::encrypt($user['current_task']) }}"> Click here</a>  <hr>
+                            @else
+                                <p>No Task Currently</p>                                
+                            @endif
                         </div>
                     </div>
                     <div class="row">
