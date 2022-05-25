@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Mail\Reminder;
 use App\Models\Project;
 use App\Models\Task;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -54,9 +55,10 @@ class AdminController extends Controller
         return view('project.types-tasks',['data' => $data]);
     }
 
-    public function email($id){
-        $task = Task::find($id);
-        //Mail::to('ahmedmohamedtaha2001@gmail.com')->send(new Reminder($task));
+    public function email($taskId,$userId){
+        $task = Task::find($taskId);
+        $email = User::find($userId)->email;
+        Mail::to($email)->send(new Reminder($task));
         return new Reminder($task);
     }
 }

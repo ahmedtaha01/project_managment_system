@@ -25,7 +25,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'position',
         'number_of_tasks',
         'current_task',
-        'facebook_id'
+        'provider_id',
     ];
 
     /**

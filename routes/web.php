@@ -22,7 +22,7 @@ use App\Http\Controllers\SocialController;
 
 Route::get('/', function () {
     return view('project.landing-page');
-});
+})->middleware('guest');
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');

@@ -56,19 +56,24 @@
                 </x-button>
             </div>
             <div class="icons">
-                <div style="float: left;margin-left:4px" class="img">
-                    <a href="redirect/facebook">
+                <div style="float: left;margin-left:6px;margin-right:6px" class="img">
+                    <a href="/redirect/facebook">
                         <img src="{{ asset('images/facebook.png') }}" alt="facebook logo" >
                     </a>
                 </div>
-                <div style="float: left;margin-left:4px" class="img">
-                    <a  href="redirect/facebook">
-                        <img class="d-inline" src="{{ asset('images/google.png') }}" alt="facebook logo" >
+                <div style="float: left;margin-left:6px;margin-right:6px" class="img">
+                    <a  href="/redirect/google">
+                        <img class="d-inline" src="{{ asset('images/google.png') }}" alt="google logo" >
                     </a>
                 </div>
-                <div style="float: left;margin-left:4px" class="img">
-                    <a  href="redirect/facebook">
-                        <img class="d-inline" src="{{ asset('images/twitter.png') }}" alt="facebook logo" >
+                <div style="float: left;margin-left:6px;margin-right:6px" class="img">
+                    <a  href="#">
+                        <img class="d-inline" src="{{ asset('images/twitter.png') }}" alt="twitter logo" >
+                    </a>
+                </div>
+                <div style="float: left;margin-left:6px;margin-right:6px" class="img">
+                    <a href="/redirect/github">
+                        <img class="d-inline" src="{{ asset('images/github.png') }}" alt="github logo" >
                     </a>
                 </div>
             </div>

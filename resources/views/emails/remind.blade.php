@@ -4,7 +4,7 @@
 
 hurry up the deadline is close , {{ $data->deadline }}
 
-@component('mail::button', ['url' => 'http://127.0.0.1:8000/project/task/'.$data->id ,'color' => 'success'])
+@component('mail::button', ['url' => 'http://127.0.0.1:8000/task/'.Crypt::encrypt($data->id) ,'color' => 'success'])
 Go To Task
 @endcomponent
 

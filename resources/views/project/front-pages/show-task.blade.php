@@ -16,7 +16,7 @@
                     <form action="/task/{{ $data['task']->id }}" method="post">
                         @csrf
                         @method('PUT')
-                        <input class="form-control btn btn-primary" type="submit" value="Start Task">
+                        <input class="form-control btn btn-primary" type="submit" name="submit" value="Start Task">
                     </form>    
                 @endif
                 
@@ -37,12 +37,12 @@
                     deadline : <span class="text-danger">{{ $data['task']->deadline }}</span> 
                 </div>
                 <div class="mt-4 mb-4">
-                    @if ($data['task']->attachment == null)
+                    @if ($data['task']->attachment == null && $data['task']->phase == '1')
                         <form class="form-control" action="/task/{{ $data['task']->id }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <input class="form-control" type="file" name="File">
-                            <input class="form-control btn btn-outline-primary mt-2" type="submit" value="Upload">
+                            <input class="form-control btn btn-outline-primary mt-2" name='submit' type="submit" value="Upload">
                             
                                 @if ($errors->any())
                                     @foreach ($errors->all() as $error)
@@ -58,9 +58,9 @@
                                 @endif
                         </form>
 
-                    @else
+                    @elseif ($data['task']->attachment != null)
                         <div class="bg-success text-white text-center p-3 m-3">
-                            File hass been uploaded successfuly
+                            File has been uploaded successfuly
                         </div>
                     @endif
                     

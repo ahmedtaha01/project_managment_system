@@ -105,7 +105,8 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(empty($request->File)){
+       
+        if($request->input('submit') == 'Start Task'){
             Task::where('id','=',$id)->update([
                 'phase'         => '1',
             ]);

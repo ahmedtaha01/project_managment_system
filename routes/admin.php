@@ -24,7 +24,7 @@ Route::middleware('isAdmin')->group(function(){
 
     Route::get('/tasks/{id}', [AdminController::class,'tasks']);
 
-    Route::get('/email/{id}',[AdminController::class , 'email']);
+    Route::get('/email/{taskId}/{userId}',[AdminController::class , 'email']);
 
     Route::get('/download/{filename}',[DownloadController::class , 'download']);
 

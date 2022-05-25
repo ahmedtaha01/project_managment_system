@@ -30,6 +30,24 @@ return [
         'redirect' => env ( 'FB_REDIRECT' )
     ],
 
+    'github' => [
+        'client_id' => env('GH_CLIENT_ID'),
+        'client_secret' => env('GH_CLIENT_SECRET'),
+        'redirect' => env('GH_REDIRECT'),
+    ], 
+    
+    'google' => [
+        'client_id' => env('GO_CLIENT_ID'),
+        'client_secret' => env('GO_CLIENT_SECRET'),
+        'redirect' => env('GO_REDIRECT'),
+    ],
+
+    'twitter' => [
+        'client_id' => env('TW_CLIENT_ID'),
+        'client_secret' => env('TW_CLIENT_SECRET'),
+        'redirect' => env('TW_REDIRECT'),
+    ],
+
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),
         'secret' => env('AWS_SECRET_ACCESS_KEY'),

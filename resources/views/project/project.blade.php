@@ -58,7 +58,7 @@
                                 @endif
                             </div>
                             <div class="text-center phase mb-4">
-                                <a href="/email/{{ $task->id }}" class="btn btn-primary text-center">
+                                <a href="/email/{{ $task->id }}/{{ $task->user->id }}" class="btn btn-primary text-center">
                                     send reminder
                                 </a>
                             </div>
