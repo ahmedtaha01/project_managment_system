@@ -14,21 +14,7 @@ use App\Models\User;
 class AdminController extends Controller
 {
     public function dashboard(){
-        $numberOfProjects       = DB::table('projects')->count();
-        $numberOfTasksCompleted = DB::table('tasks')->where('phase','2')->count();
-        $numberOfTasksWaiting   = DB::table('tasks')->where('phase','0')->count();
-        $numberOfTasksProcess   = DB::table('tasks')->where('phase','1')->count();
-        $numberOfUsers          = DB::table('users')->count();
-        $projects               = Project::get();
-        $data = [
-            'number_of_projects'            => $numberOfProjects,
-            'number_of_tasks_completed'     => $numberOfTasksCompleted,
-            'number_of_tasks_waiting'       => $numberOfTasksWaiting,
-            'number_of_tasks_process'       => $numberOfTasksProcess,
-            'number_of_users'               => $numberOfUsers,
-            'projects'                      => $projects,
-        ];
-        return view('project.dashboard',['data' => $data]);
+        
     }
 
     public function projects(){

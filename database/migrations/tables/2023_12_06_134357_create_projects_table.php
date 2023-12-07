@@ -14,10 +14,14 @@ class CreateProjectsTable extends Migration
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->longText('description');
-            $table->date('p_created_at');
+            $table->id();
+            $table->string('name',50);
+            $table->text('description');
+            $table->integer('number_of_tasks');
+            $table->integer('completed_tasks');
+            $table->string('status')->default('open');
+            $table->unsignedBigInteger('admin_id');
+            $table->timestamps();
         });
     }
 
@@ -31,4 +35,3 @@ class CreateProjectsTable extends Migration
         Schema::dropIfExists('projects');
     }
 }
-

@@ -9,11 +9,15 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $table = 'projects';
+    protected $fillable = [
+        'name',
+        'description',
+        'number_of_tasks',
+        'completed_tasks',
+        'status',
+        'admin_id',
+    ];
 
-    protected $fillable = ['name','description','p_created_at'];
-    
-    public $timestamps = false;
 
     public function tasks(){
         return $this->hasMany(Task::class);

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddProviderIdToUsersTable extends Migration
+class AlterUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,11 @@ class AddProviderIdToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->Text('provider_id');
+            $table->foreign('admin_id')
+                  ->references('id')
+                  ->on('admins')
+                  ->onDelete('cascade')
+                  ->onUpdate('cascade');
         });
     }
 
@@ -26,7 +30,7 @@ class AddProviderIdToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('provider_id');
+            $table->dropForeign('users_admin_id_foreign');
         });
     }
 }

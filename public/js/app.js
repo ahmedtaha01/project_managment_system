@@ -22237,6 +22237,49 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/css/animate.min.css":
+/*!***************************************!*\
+  !*** ./resources/css/animate.min.css ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/css/bootstrap.min.css":
+/*!*****************************************!*\
+  !*** ./resources/css/bootstrap.min.css ***!
+  \*****************************************/
+/***/ (() => {
+
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/css-loader/dist/cjs.js):\nError: Can't resolve '../fonts/glyphicons-halflings-regular.eot' in 'C:\\wamp64\\www\\project_managment_system\\resources\\css'\n    at finishWithoutResolve (C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:309:18)\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:386:15\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at eval (eval at create (C:\\wamp64\\www\\project_managment_system\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at eval (eval at create (C:\\wamp64\\www\\project_managment_system\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\DescriptionFilePlugin.js:87:43\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at eval (eval at create (C:\\wamp64\\www\\project_managment_system\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at processResult (C:\\wamp64\\www\\project_managment_system\\node_modules\\webpack\\lib\\NormalModule.js:758:19)\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\webpack\\lib\\NormalModule.js:860:5\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\loader-runner\\lib\\LoaderRunner.js:400:11\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\loader-runner\\lib\\LoaderRunner.js:252:18\n    at context.callback (C:\\wamp64\\www\\project_managment_system\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at Object.loader (C:\\wamp64\\www\\project_managment_system\\node_modules\\css-loader\\dist\\index.js:155:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)");
+
+/***/ }),
+
+/***/ "./resources/css/font-awesome.min.css":
+/*!********************************************!*\
+  !*** ./resources/css/font-awesome.min.css ***!
+  \********************************************/
+/***/ (() => {
+
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/css-loader/dist/cjs.js):\nError: Can't resolve '../fonts/fontawesome-webfont.eot?v=4.3.0' in 'C:\\wamp64\\www\\project_managment_system\\resources\\css'\n    at finishWithoutResolve (C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:309:18)\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:386:15\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at eval (eval at create (C:\\wamp64\\www\\project_managment_system\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at eval (eval at create (C:\\wamp64\\www\\project_managment_system\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\DescriptionFilePlugin.js:87:43\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at eval (eval at create (C:\\wamp64\\www\\project_managment_system\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at processResult (C:\\wamp64\\www\\project_managment_system\\node_modules\\webpack\\lib\\NormalModule.js:758:19)\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\webpack\\lib\\NormalModule.js:860:5\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\loader-runner\\lib\\LoaderRunner.js:400:11\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\loader-runner\\lib\\LoaderRunner.js:252:18\n    at context.callback (C:\\wamp64\\www\\project_managment_system\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at Object.loader (C:\\wamp64\\www\\project_managment_system\\node_modules\\css-loader\\dist\\index.js:155:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)");
+
+/***/ }),
+
+/***/ "./resources/css/templatemo-style.css":
+/*!********************************************!*\
+  !*** ./resources/css/templatemo-style.css ***!
+  \********************************************/
+/***/ (() => {
+
+throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/css-loader/dist/cjs.js):\nError: Can't resolve '../images/home-bg.jpg' in 'C:\\wamp64\\www\\project_managment_system\\resources\\css'\n    at finishWithoutResolve (C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:309:18)\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:386:15\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at eval (eval at create (C:\\wamp64\\www\\project_managment_system\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:16:1)\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at eval (eval at create (C:\\wamp64\\www\\project_managment_system\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:27:1)\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\DescriptionFilePlugin.js:87:43\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at eval (eval at create (C:\\wamp64\\www\\project_managment_system\\node_modules\\tapable\\lib\\HookCodeFactory.js:33:10), <anonymous>:15:1)\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\enhanced-resolve\\lib\\Resolver.js:435:5\n    at processResult (C:\\wamp64\\www\\project_managment_system\\node_modules\\webpack\\lib\\NormalModule.js:758:19)\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\webpack\\lib\\NormalModule.js:860:5\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\loader-runner\\lib\\LoaderRunner.js:400:11\n    at C:\\wamp64\\www\\project_managment_system\\node_modules\\loader-runner\\lib\\LoaderRunner.js:252:18\n    at context.callback (C:\\wamp64\\www\\project_managment_system\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at Object.loader (C:\\wamp64\\www\\project_managment_system\\node_modules\\css-loader\\dist\\index.js:155:5)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)");
+
+/***/ }),
+
 /***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
   !*** ./node_modules/process/browser.js ***!
@@ -22565,6 +22608,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
+/******/ 			"css/animate.min": 0,
 /******/ 			"css/app": 0
 /******/ 		};
 /******/ 		
@@ -22615,8 +22659,12 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/animate.min","css/app"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/animate.min","css/app"], () => (__webpack_require__("./resources/css/app.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/animate.min","css/app"], () => (__webpack_require__("./resources/css/animate.min.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/animate.min","css/app"], () => (__webpack_require__("./resources/css/bootstrap.min.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/animate.min","css/app"], () => (__webpack_require__("./resources/css/font-awesome.min.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/animate.min","css/app"], () => (__webpack_require__("./resources/css/templatemo-style.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

@@ -21,11 +21,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
-        'image',
-        'position',
         'number_of_tasks',
         'current_task',
-        'provider_id',
+        'admin_id'
     ];
 
     /**
@@ -53,7 +51,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Task::class);
     }
 
-    public function chat(){
-        return $this->hasMany(Chat::class);
+    public function messages(){
+        return $this->hasMany(Message::class);
+    }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
     }
 }

@@ -9,21 +9,21 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $table = 'tasks';
-
-    protected $fillable = ['name', 'description', 'deadline' ,'t_created_at','project_id','user_id'];
-
-    public $timestamps = false;
+    protected $fillable = [
+        'name',
+        'description',
+        'status',
+        'deadline',
+        'priority',
+        'user_id',
+        'project_id',
+    ];
 
     public function user(){
         return $this->belongsTo(User::class);
     }
 
     public function project(){
-        return $this->belongsTo(Project::class);
-    }
-
-    public function chat(){
-        return $this->hasMany(Chat::class);
+        return $this->belongsTo(project::class);
     }
 }

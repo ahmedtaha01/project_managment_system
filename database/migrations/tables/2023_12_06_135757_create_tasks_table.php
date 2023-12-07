@@ -14,16 +14,15 @@ class CreateTasksTable extends Migration
     public function up()
     {
         Schema::create('tasks', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->Text('description');
-            $table->char('phase');
-            $table->dateTime('t_created_at');
+            $table->id();
+            $table->string('name',50);
+            $table->text('description');
+            $table->string('status');
             $table->dateTime('deadline');
-            $table->UnsignedInteger('user_id');
-            $table->UnsignedInteger('project_id');            
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+            $table->string('priority',1);
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('project_id');
+            $table->timestamps();
         });
     }
 
@@ -37,4 +36,3 @@ class CreateTasksTable extends Migration
         Schema::dropIfExists('tasks');
     }
 }
-

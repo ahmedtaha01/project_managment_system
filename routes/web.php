@@ -21,8 +21,8 @@ use App\Http\Controllers\SocialController;
 */
 
 Route::get('/', function () {
-    return view('project.landing-page');
-})->middleware('guest');
+    return view('welcome');
+})->middleware('guest')->name('welcome');
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');

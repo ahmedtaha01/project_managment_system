@@ -1,11 +1,11 @@
 @extends('project.layouts.admin-layout')
-@section('adminContent')
+@section('admin-content')
     <div class="container">
         <div class="row">
             <div class="col-sm-10 offset-sm-2 main">
                 <div>
                     <div class="mt-4 mb-4">
-                        <img src="{{ (auth()->user()->image==null)? asset('images/profile/profile.png'):asset('images/profile/'.auth()->user()->image)  }}" alt="avatar" width="45"height="45" style="border-radius: 50%" />
+                        <img src="{{ (auth()->user()->image==null)? asset('images/profile/profile.png'):asset('images/profile/'.auth()->user()->image->path)  }}" alt="avatar" width="45"height="45" style="border-radius: 50%" />
                         <span class="span-posi1">
                             <span class="phrase-hello">Hello,</span> <span class="phrase-name">{{ auth()->user()->name }}</span>
                         </span>
@@ -36,7 +36,7 @@
                                     <i class="fa-solid fa-list-check icon"></i>
                                 </div>
                                 <div class="box-data-word">
-                                    Tasks Accomplished
+                                    Tasks Completed
                                 </div>
                                 <div class="box-data-number">
                                     {{ $data['number_of_tasks_completed'] }}
@@ -51,10 +51,10 @@
                                     <i class="fa-solid fa-circle-pause icon"></i>
                                 </div>
                                 <div class="box-data-word">
-                                    Waiting Tasks
+                                    To do Tasks
                                 </div>
                                 <div class="box-data-number">
-                                    {{ $data['number_of_tasks_waiting'] }}
+                                    {{ $data['number_of_tasks_to_do'] }}
                                 </div>    
                             </div>        
                         </a>
@@ -66,10 +66,10 @@
                                     <i class="fa-solid fa-spinner icon"></i> 
                                 </div>
                                 <div class="box-data-word">
-                                    Tasks in proccess
+                                    Tasks in progress
                                 </div>
                                 <div class="box-data-number">
-                                    {{ $data['number_of_tasks_process'] }}
+                                    {{ $data['number_of_tasks_in_progress'] }}
                                 </div>    
                             </div>
                         </a>
@@ -93,8 +93,8 @@
     
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="shadow-lg" style="background-color: white">
-                            <h3 class="heading-dashboard">
+                        <div class="shadow-lg" style="background-color: white;border-radius:5px">
+                            <h3 class="heading-dashboard text-center p-3">
                                 Projects
                             </h3>
                             <table class="table">
@@ -105,16 +105,18 @@
                                         </td>
                                         <td class="p-3">
                                             <div class="progress">
-                                                <div class="progress-bar" role="progressbar" style="background: linear-gradient(90deg, #0f123f 0%, #292c4d 69%, #37373f 100%); width: {{ ($project->tasks->where('phase','2')->count() /($project->tasks->count() == 0 ? 1 : $project->tasks->count() ) )*100 }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                <div class="progress-bar" role="progressbar" style="background: linear-gradient(90deg, #0f123f 0%, #292c4d 69%, #37373f 100%); width: {{ ($project->completed_tasks /($project->number_of_tasks == 0 ? 1 : $project->number_of_tasks ) )*100 }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                             </div>
                                         </td>
                                     </tr>    
                                 @empty
+                                <div class="alert alert-warning text-center">
                                     No Projects
+                                </div>
+                                    
                                 @endforelse
                             </table>
                         </div>
-                        
                     </div>
                 </div>
             </div>
