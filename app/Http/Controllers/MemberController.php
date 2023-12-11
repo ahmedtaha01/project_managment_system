@@ -12,6 +12,6 @@ class MemberController extends Controller
         $data = [
             'tasks' => $tasks,
         ];
-        return view('project.front-pages.home',['data' => $data]);
+        return view('project.user.home',['data' => $data]);
     }
 }

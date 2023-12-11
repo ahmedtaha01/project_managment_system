@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
+use App\Http\Requests\Admin\Task\CreateTaskRequest;
+use App\Models\Project;
 use App\Models\Task;
-use App\Models\Chat;
+
 use App\Models\User;
 
-class TaskController extends Controller
+class TaskController
 {
     /**
      * Display a listing of the resource.
@@ -18,13 +20,19 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $projects = DB::table('projects')->select('id','name')->get();
-        $users = DB::table('users')->select('id','name')->get();
+        
+        
+        
+    }
+
+    public function indexTypes($type){
+        $projects = Project::where('admin_id',auth()->user()->id)->pluck('id');
+        $tasks = Task::whereIn('project_id',$projects)->where('status',$type)->get();
         $data = [
-            'projects' => $projects,
-            'users'    => $users, 
+            'tasks' => $tasks,
+            'name'  => $type
         ];
-        return view('project.add-task',[ 'data' => $data ]);
+        return view('project.admin.task.types-tasks',compact('data'));
     }
 
     /**
@@ -34,7 +42,13 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        $projects = DB::table('projects')->where('admin_id',auth()->user()->id)->select('id','name')->get();
+        $users = DB::table('users')->where('admin_id',auth()->user()->id)->select('id','name')->get();
+        $data = [
+            'projects' => $projects,
+            'users'    => $users, 
+        ];
+        return view('project.admin.task.add-task',[ 'data' => $data ]);
     }
 
     /**
@@ -43,26 +57,26 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateTaskRequest $request)
     {
-        $request->validate([
-            'name'          => 'required',
-            'description'   => 'required',
-            'deadline'      => 'required',
-            'project'       => 'required',
-            'user'          => 'required',
-        ]);
+        DB::transaction(function () use($request){
+            Task::create([
+                'name'          => $request->name,
+                'description'   => $request->description,
+                'deadline'      => $request->deadline,
+                'created_at'    => date('Y-m-d H-i'),
+                'project_id'    => $request->project_id,
+                'user_id'       => $request->user_id,
+                'status'        => 'to do',
+                'priority'      => $request->priority,
+            ]);
 
-        Task::create([
-            'name'          => $request->input('name'),
-            'description'   => $request->input('description'),
-            'deadline'      => $request->input('deadline'),
-            't_created_at'  => date('Y-m-d H-i'),
-            'project_id'    => $request->input('project'),
-            'user_id'       => $request->input('user'),
-        ]);
-
-        return redirect('/task');
+            $project = Project::find($request->project_id);
+            $project->number_of_tasks = $project->number_of_tasks + 1;
+            $project->save();
+        });
+        
+        return redirect()->route('projects.show',$request->project_id);
     }
 
     /**
@@ -71,18 +85,9 @@ class TaskController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Task $task)
     {
-        $id = Crypt::decrypt($id);
-        $task = Task::findOrFail($id);
-        $data = [
-            'task' => $task,
-        ];
-        if(auth()->user()->is_admin == '1'){
-            return view('project.task',['data' => $data]);
-        }
-
-        return view('project.front-pages.show-task',['data' => $data]);
+        return view('project.admin.task.task',compact('task'));        
     }
 
     /**

@@ -4,14 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
-use App\Models\Admin;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 
-use function PHPUnit\Framework\isEmpty;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -53,7 +49,13 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
-        Auth::guard('admin')->logout();
+        
+        if(Auth::guard('admin')->check()){
+            Auth::guard('admin')->logout();
+        } else {
+            Auth::logout();
+        }
+        
 
         $request->session()->invalidate();
 

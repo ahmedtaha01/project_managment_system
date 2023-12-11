@@ -5,7 +5,7 @@
             <div class="col-sm-10 offset-sm-2 main">
                 <div>
                     <div class="mt-4 mb-4">
-                        <img src="{{ (auth()->user()->image==null)? asset('images/profile/profile.png'):asset('images/profile/'.auth()->user()->image->path)  }}" alt="avatar" width="45"height="45" style="border-radius: 50%" />
+                        <img src="{{ (auth()->user()->image == null)? asset('images/profile/profile.png'):asset('images/profile/'.auth()->user()->image->path)  }}" alt="avatar" width="45"height="45" style="border-radius: 50%" />
                         <span class="span-posi1">
                             <span class="phrase-hello">Hello,</span> <span class="phrase-name">{{ auth()->user()->name }}</span>
                         </span>
@@ -15,7 +15,7 @@
                 </div>
                 <div class='row'>
                     <div class="col-lg-3">
-                        <a href="/projects">
+                        <a href="{{ route('projects.index') }}">
                             <div class="box-data shadow-lg">
                                 <div class="icon-div">
                                     <i class="fa fa-project-diagram"></i> 
@@ -30,22 +30,7 @@
                         </a>  
                     </div>
                     <div class="col-lg-3">
-                        <a href="/tasks/2">
-                            <div class="box-data shadow-lg">
-                                <div class="icon-div">
-                                    <i class="fa-solid fa-list-check icon"></i>
-                                </div>
-                                <div class="box-data-word">
-                                    Tasks Completed
-                                </div>
-                                <div class="box-data-number">
-                                    {{ $data['number_of_tasks_completed'] }}
-                                </div>    
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-3">
-                        <a href="/tasks/0">
+                        <a href="{{ route('tasks.types','to do') }}">
                             <div class="box-data shadow-lg">
                                 <div class="icon-div">
                                     <i class="fa-solid fa-circle-pause icon"></i>
@@ -60,7 +45,7 @@
                         </a>
                     </div>
                     <div class="col-lg-3">
-                        <a href="/tasks/1">
+                        <a href="{{ route('tasks.types','in progress') }}">
                             <div class="box-data shadow-lg">
                                 <div class="icon-div">
                                     <i class="fa-solid fa-spinner icon"></i> 
@@ -74,8 +59,42 @@
                             </div>
                         </a>
                     </div>
+
                     <div class="col-lg-3">
-                        <a href="/user">
+                        <a href="{{ route('tasks.types','code review') }}">
+                            <div class="box-data shadow-lg">
+                                <div class="icon-div">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </div>
+                                <div class="box-data-word">
+                                    Tasks in code review
+                                </div>
+                                <div class="box-data-number">
+                                    {{ $data['number_of_tasks_code_review'] }}
+                                </div>    
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <a href="{{ route('tasks.types','done') }}">
+                            <div class="box-data shadow-lg">
+                                <div class="icon-div">
+                                    <i class="fa-solid fa-list-check icon"></i>
+                                </div>
+                                <div class="box-data-word">
+                                    Tasks Completed
+                                </div>
+                                <div class="box-data-number">
+                                    {{ $data['number_of_tasks_completed'] }}
+                                </div>    
+                            </div>
+                        </a>
+                    </div>
+                    
+                    
+                    <div class="col-lg-3">
+                        <a href="{{ route('users.index') }}">
                             <div class="box-data shadow-lg">
                                 <div class="icon-div">
                                     <i class="fa-solid fa-users icon"></i> 
@@ -110,7 +129,7 @@
                                         </td>
                                     </tr>    
                                 @empty
-                                <div class="alert alert-warning text-center">
+                                <div class="alert alert-warning text-center m-3">
                                     No Projects
                                 </div>
                                     

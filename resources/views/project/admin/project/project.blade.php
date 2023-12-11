@@ -1,6 +1,6 @@
 @extends('project.layouts.admin-layout')
 
-@section('adminContent')
+@section('admin-content')
 <div class="container">
     <div class="row">
         <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2">
@@ -9,10 +9,10 @@
                     {{ $data['project']->name }}
                 </h1>
             </div>
-            @if ( ($data['project']->tasks->where('phase','2')->count() /($data['project']->tasks->count() == 0 ? 1 : $data['project']->tasks->count() ) )*100 != 100)
+            @if ( ($data['project']->completed_tasks /($data['project']->number_of_tasks == 0 ? 1 : $data['project']->number_of_tasks ) )*100 != 100)
             <div class="mb-4">
                 <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ ($data['project']->tasks->where('phase','2')->count() /($data['project']->tasks->count() == 0 ? 1 : $data['project']->tasks->count() ) )*100 }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ ($data['project']->completed_tasks /($data['project']->number_of_tasks == 0 ? 1 : $data['project']->number_of_tasks ) )*100 }}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
             @else  
@@ -26,36 +26,25 @@
             <div class="row">
                 @forelse ($data['tasks'] as $task)
                 <div class="col-md-4 col-sm-12">
-                    <a href="/task/{{ Crypt::encrypt($task->id) }}" class="text-dark">
+                    <a href="{{ route('tasks.show',$task->id) }}" class="text-dark">
                         <div class="task-data fw-bold" style="background-color: white">
                             <div class="task-name text-center">
                                 {{ $task->name }}
                             </div>
                             <div class="task-user">
-                                <img src="{{ $task->user->image == null ? asset('images/profile/profile.png'): asset('images/profile/'.$task->user->image) }}" width="50" height="40" style="border-radius: 50%;">
-                                <span>{{ $task->user->name }}</span> 
-                                <span class="card-subtitle text-muted e-mail">{{ $task->user->email }}</span>
+                                <img src="{{ $task->user->image == null ? asset('images/profile/profile.png'): asset('images/profile/'.$task->user->image->path) }}" width="50" height="40" style="border-radius: 50%;">
+                                <span>{{ $task['user']->name }}</span>
+                                
+                                <span class=" text-muted e-mail">{{ $task['user']->email }}</span>
                             </div>
                             <div class="task-created">
-                                created at : <span class="text-success">{{ $task->t_created_at }}</span> 
+                                created at : <span class="text-success">{{ $task->created_at }}</span> 
                             </div>
                             <div class="task-deadline">
                                 deadline : <span class="text-danger">{{ $task->deadline }}</span> 
                             </div>
                             <div class="text-center phase">
-                                @if ($task->phase == '0')
-                                    <span class="text-white bg-warning p-2 rounded m-2">
-                                        Waiting
-                                    </span> 
-                                @elseif ($task->phase == '1')
-                                    <span class="text-white bg-secondary p-2 rounded m-2"> 
-                                        Processing
-                                    </span>
-                                @else
-                                    <span class="text-success bg-white p-2 rounded m-2">
-                                        Completed
-                                    </span> 
-                                @endif
+                                <x-project.task-status :status="$task->status" />
                             </div>
                             <div class="text-center phase mb-4">
                                 <a href="/email/{{ $task->id }}/{{ $task->user->id }}" class="btn btn-primary text-center">

@@ -1,6 +1,6 @@
 @extends('project.layouts.admin-layout')
 
-@section('adminContent')
+@section('admin-content')
 <div class='container'>
     <div row='row'>
         <div class="col-md-10 offset-md-2 col-sm-9 offset-sm-3">
@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="user-image" >
-                                <img src="{{ ($user['image']==null)? asset('images/profile/profile.png') : '/images/profile/'.$user['image'] }}" style="border-radius: 50%;width: inherit; height: inherit;">
+                                <img src="{{ ($user->image==null)? asset('images/profile/profile.png') : '/images/profile/'.$user->image->path }}" style="border-radius: 50%;width: inherit; height: inherit;">
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -30,13 +30,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="d-grid gap-2 m-3">
-                                <a href="/user/{{ $user['id'] }}/edit" class="btn btn-outline-primary p-3 fs-5 fw-bold" >
+                                <a href="{{ route('users.edit',$user->id) }}" class="btn btn-outline-primary p-3 fs-5 fw-bold" >
                                     Edit
                                 </a>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <form action="/user/{{ $user['id'] }}" method="post">
+                            <form action="{{ route('users.destroy',$user->id) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <div class="d-grid gap-2 m-3">

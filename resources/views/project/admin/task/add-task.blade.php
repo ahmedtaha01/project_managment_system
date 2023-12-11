@@ -1,13 +1,13 @@
 @extends('project.layouts.admin-layout')
 
-@section('adminContent')
+@section('admin-content')
     <div class='container'>
         <div row='row'>
             <div class="col-md-10 offset-md-2 col-sm-9 offset-sm-3">
                 <div>
                     <h1 class="heading-dashboard" style="margin: 0">Add a new Task</h1>
                 </div>
-                <form action="/task" method="post">
+                <form action="{{ route('tasks.store') }}" method="post">
                     @csrf
                     <div class="form p-3 rounded-3 shadow-lg" style="background-color: white">
                         <label class="mb-2 fs-5">Task Name</label>
@@ -16,16 +16,18 @@
                         <textarea class="form-control rounded-3" cols="30" rows="2" name='description'></textarea>
                         <label class="mb-2 fs-5">DeadLine</label>
                         <input class="form-control" type="datetime-local" name='deadline'>
+                        <label class="mb-2 fs-5">Priority</label>
+                        <input type="number" class="form-control" name="priority" min="1" max="9">
                         <label class="mb-2 fs-5">Project</label>
-                        <select class="form-select" name='project'>
-                            <option selected>Open this select menu</option>
+                        <select class="form-select" name='project_id'>
+                            <option disabled selected value> select an option </option>
                             @foreach ($data['projects'] as $project)
                                 <option value="{{ $project->id }}">{{ $project->name }}</option>                            
                             @endforeach
                         </select>
                         <label class="mb-2 fs-5">User</label>
-                        <select class="form-select" name='user'>
-                            <option selected>Open this select menu</option>
+                        <select class="form-select" name='user_id'>
+                            <option disabled selected value> select an option </option>
                             @foreach ($data['users'] as $user)
                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                                 

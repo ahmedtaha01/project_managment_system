@@ -13,7 +13,7 @@
             </div>    
         </div>
       </div>  
-      @yield('front-content')
+      @yield('user-content')
     
 
       @include('project.partials.footer')

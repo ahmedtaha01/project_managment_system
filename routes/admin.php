@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\DownloadController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MailController;
+use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\Admin\UserController;
 
 
 /*
@@ -18,22 +20,19 @@ use App\Http\Controllers\Admin\DashboardController;
 |
 */
 
-Route::middleware('auth:admin')->group(function (){
-    Route::get('/dashboard', [DashboardController::class,'dashboard']);
+    Route::get('/dashboard', [DashboardController::class,'dashboard'])->name('dashboard');
 
-    Route::get('/projects', [AdminController::class,'projects']);
-    
-    Route::get('/tasks/{id}', [AdminController::class,'tasks']);
-    
-    Route::get('/email/{taskId}/{userId}',[AdminController::class , 'email']);
-    
-    Route::get('/download/{filename}',[DownloadController::class , 'download']);
-    
-    Route::resource('/user',UserController::class);
-});
+    Route::resource('/projects',ProjectController::class);
 
+    Route::get('tasks-type/{type}',[TaskController::class,'indexTypes'])->name('tasks.types');
 
+    Route::resource('/tasks',TaskController::class);
+    
+    Route::resource('/users',UserController::class);
 
+    Route::resource('/message',MessageController::class);
+    
+    Route::get('/email/{taskId}/{userId}',[MailController::class , 'index']);
 
 
 require __DIR__.'/auth.php';

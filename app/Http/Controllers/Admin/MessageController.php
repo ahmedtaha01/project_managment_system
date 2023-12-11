@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\Message\CreateMessageRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
-use App\Models\Chat;
+use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
 
-class chatController extends Controller
+class MessageController
 {
     /**
      * Display a listing of the resource.
@@ -35,18 +35,16 @@ class chatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateMessageRequest $request)
     {
-        $request->validate([
-            'content' => 'required',
-        ]);
-        Chat::create([
-            'content' => $request->input('content'),
-            'task_id' => $request->input('taskId'),
-            'user_id' => auth()->user()->id,
+        Message::create([
+            'content'           => $request->content,
+            'task_id'           => $request->task_id,
+            'messageable_id'    => auth()->user()->id,
+            'messageable_type'  => 'App\Models\Admin',
         ]);
 
-        return redirect("/task/".Crypt::encrypt($request->input('taskId')));
+        return redirect()->route('tasks.show',$request->task_id);
     }
 
     /**

@@ -11,12 +11,13 @@ class Message extends Model
 
     protected $fillable = [
         'content',
-        'user_id',
+        'messageable_id',
+        'messageable_type',
         'task_id',
     ];
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function messageable(){
+        return $this->morphTo();
     }
 
     public function task(){

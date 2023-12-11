@@ -23,7 +23,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'number_of_tasks',
         'current_task',
-        'admin_id'
+        'admin_id',
+        'position',
     ];
 
     /**
@@ -51,12 +52,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Task::class);
     }
 
-    public function messages(){
-        return $this->hasMany(Message::class);
-    }
-
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function messages(){
+        return $this->morphMany(Message::class,'messageable');
     }
 }

@@ -1,20 +1,21 @@
 @extends('project.layouts.admin-layout')
 
-@section('adminContent')
+@section('admin-content')
 <div class='container'>
     <div row='row'>
         <div class="col-md-10 offset-md-2 col-sm-9 offset-sm-3">
             <div>
                 <h2 class="heading-dashboard" style="margin: 0">User Info</h2>
             </div>
-            <form action="/user/{{ $user->id }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('users.update',$user->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+                <input type="hidden" name="user_id" value="{{ $user->id }}">
                 <div class="form p-3 rounded-3" style="background-color: white">
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="user-image" >
-                                <img src="{{ ($user->image == null)? asset('images/profile/profile.png') : '/images/profile/'.$user->image }}" style="border-radius: 50%;width: inherit; height: inherit;">
+                                <img src="{{ ($user->image == null)? asset('images/profile/profile.png') : '/images/profile/'.$user->image->path }}" style="border-radius: 50%;width: inherit; height: inherit;">
                             </div>
                         </div>
                         <div class="col-lg-6">

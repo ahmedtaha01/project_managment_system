@@ -32,7 +32,8 @@ class DashboardController
                                     ->where('status','done')->count();
         $number_of_users            = DB::table('users')
                                     ->where('admin_id',auth()->user()->id)->count();
-        $projects               = Project::get();
+        $projects               = Project::where('admin_id',auth()->guard('admin')->user()->id)
+                                            ->get();
 
         $data = [
             'number_of_projects'            => $number_of_projects,

@@ -30,4 +30,8 @@ class Admin extends Authenticatable
     {
         return $this->morphOne(Image::class, 'imageable');
     }
+
+    public function message(){
+        return $this->morphMany(Message::class,'messageable');
+    }
 }

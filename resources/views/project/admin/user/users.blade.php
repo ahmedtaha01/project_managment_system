@@ -1,6 +1,6 @@
 @extends('project.layouts.admin-layout')
 
-@section('adminContent')
+@section('admin-content')
 <div class='container'>
     <div row='row'>
         <div class="col-md-10 offset-md-2 col-sm-9 offset-sm-3">
@@ -11,8 +11,8 @@
                 @forelse ($users as $user)
                     <div class="col-lg-4">
                         <div class="card mb-3 shadow-lg" style="width: 18rem;">
-                            <a href="/user/{{ $user->id }}">
-                                <img src="{{ ($user->image==null)? asset('images/profile/profile.png') : '/images/profile/'.$user->image }}" class="card-img-top image">
+                            <a href="{{ route('users.show',$user->id) }}">
+                                <img src="{{ ($user->image==null)? asset('images/profile/profile.png') : '/images/profile/'.$user->image->path }}" class="card-img-top image">
                             </a>
                             <div class="card-body">
                                 <h5 class="card-title">{{ $user->name }}</h5>
@@ -22,7 +22,9 @@
                         </div>
                     </div>    
                 @empty
-                    No users
+                <div class="alert alert-warning text-center m-4">
+                    No Users
+                </div>
                 @endforelse
             </div>
         </div>

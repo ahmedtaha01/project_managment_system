@@ -1,13 +1,13 @@
 @extends('project.layouts.admin-layout')
 
-@section('adminContent')
+@section('admin-content')
 <div class='container'>
     <div row='row'>
         <div class="col-md-10 offset-md-2 col-sm-9 offset-sm-3">
             <div>
                 <h2 class="heading-dashboard" style="margin: 0">Add new Project</h2>
             </div>
-            <form action="/project" method="post">
+            <form action="{{ route('projects.store') }}" method="post">
                 @csrf
                 <div class="form p-3 rounded-3 shadow-lg" style="background-color: white">
                     <label class="mb-2 fs-5">Project Name</label>

@@ -1,6 +1,6 @@
-@extends('project.layouts.front-layout')
+@extends('project.layouts.user-layout')
 
-@section('frontContent')
+@section('user-content')
 <div class="container">
     <div class="row">
         <div class="col-lg-10 text-center offset-sm-2">

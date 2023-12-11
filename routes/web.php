@@ -40,9 +40,6 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-Route::resource('/task',TaskController::class);
-Route::resource('/chat',ChatController::class);
-Route::resource('/project',ProjectController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
