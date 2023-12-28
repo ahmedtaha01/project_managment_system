@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Task;
 use App\Http\Requests\Admin\Project\CreateProjectRequest;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController
 {
@@ -57,14 +59,22 @@ class ProjectController
      */
     public function store(CreateProjectRequest $request)
     {
-        Project::create([
-            'name'              => $request->input('name'),
-            'description'       => $request->input('description'),
-            'number_of_tasks'   => 0,
-            'completed_tasks'   => 0,
-            'status'            => 'open',
-            'admin_id'          => auth()->guard('admin')->user()->id,
-        ]);
+        DB::transaction(function ()use($request){
+            Project::create([
+                'name'              => $request->name,
+                'description'       => $request->description,
+                'number_of_tasks'   => 0,
+                'completed_tasks'   => 0,
+                'status'            => 'open',
+                'admin_id'          => auth()->guard('admin')->user()->id,
+            ]);
+
+            $user = User::find(auth()->user()->id);
+            $user->update([
+                'number_of_projects'    => $user->number_of_projects + 1,
+            ]);
+        });
+        
 
         return redirect()->route('projects.index');
 

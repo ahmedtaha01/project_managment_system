@@ -33,10 +33,11 @@ class AuthenticatedSessionController extends Controller
         
         $request->session()->regenerate();
         
-
         if(auth()->guard('admin')->check()){
-             return redirect()->intended(RouteServiceProvider::ADMIN);
+            
+            return redirect()->intended(RouteServiceProvider::ADMIN);
         } else {
+            
             return redirect()->intended(RouteServiceProvider::HOME);
         }
     }
@@ -50,13 +51,8 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request)
     {
         
-        if(Auth::guard('admin')->check()){
-            Auth::guard('admin')->logout();
-        } else {
-            Auth::logout();
-        }
+        Auth::logout();
         
-
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();

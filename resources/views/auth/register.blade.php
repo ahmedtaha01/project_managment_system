@@ -55,6 +55,7 @@
                     {{ __('Register') }}
                 </x-button>
             </div>
+            
             <div class="icons">
                 <div style="float: left;margin-left:6px;margin-right:6px" class="img">
                     <a href="/redirect/facebook">
@@ -67,8 +68,8 @@
                     </a>
                 </div>
                 <div style="float: left;margin-left:6px;margin-right:6px" class="img">
-                    <a  href="#">
-                        <img class="d-inline" src="{{ asset('images/twitter.png') }}" alt="twitter logo" >
+                    <a  href="/redirect/linkedin">
+                        <img class="d-inline" src="{{ asset('images/linkedin.png') }}" alt="twitter logo" >
                     </a>
                 </div>
                 <div style="float: left;margin-left:6px;margin-right:6px" class="img">

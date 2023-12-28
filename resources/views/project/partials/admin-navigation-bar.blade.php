@@ -18,10 +18,11 @@
       <a href="{{ route('users.create') }}"><h6><i class="fa-solid fa-plus"></i> Add User</h6></a>
     </div>
     
-    <div class="ml-3">
-      <form action="{{ route('logout') }}" method="post">
+    <div class="link-sidebar">
+      <form method="POST" action="{{ route('logout') }}">
         @csrf
-        <input type="submit" value="Logout">
+        <button type="submit" class="text-white" style="background: none;border-style:none">
+          <i class="fa-solid fa-right-from-bracket m-2"></i>Logout</button>
       </form>
     </div>
 </div>

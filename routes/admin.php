@@ -30,9 +30,9 @@ use App\Http\Controllers\Admin\UserController;
     
     Route::resource('/users',UserController::class);
 
-    Route::resource('/message',MessageController::class);
+    
     
     Route::get('/email/{taskId}/{userId}',[MailController::class , 'index']);
 
 
-require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php';

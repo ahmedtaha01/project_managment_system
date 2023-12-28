@@ -33,6 +33,14 @@
                 <div class="text-center phase mb-3">
                    <x-project.task-status :status="$task->status" />
                 </div>
+                @if ($task->status == 'code review')
+                <form action="{{ route('tasks.update',$task->id) }}" method="post">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="user_id" value="{{ $task->user->id }}">
+                    <input class="form-control btn btn-primary" type="submit" name="submit" value="Close task">
+                </form> 
+                @endif
                 @if ($task->status != 'done')
                     <div class="text-center phase mt-3 mb-4">
                         <a href="/email/{{ $task->id }}" class="btn btn-primary text-center">

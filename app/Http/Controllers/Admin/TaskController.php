@@ -108,44 +108,22 @@ class TaskController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Task $task)
     {
+        DB::transaction(function() use($request,$task){
+            $task->update([
+                'status'    => 'done',
+            ]);
+
+            $user = User::find($request->user_id);
+
+            $user->update([
+                'number_of_tasks'   => $user->number_of_tasks + 1,
+                'current_task'      => null, 
+            ]);
+        });
        
-        if($request->input('submit') == 'Start Task'){
-            Task::where('id','=',$id)->update([
-                'phase'         => '1',
-            ]);
-            User::where('id','=',auth()->user()->id)->update([
-                'current_task'         => $id,
-            ]);
-
-            return redirect('task/'.Crypt::encrypt($id))->with('success','You have started this task');
-        } else {
-            $request->validate([
-                'File' => 'required|max:1024',
-            ]);
-            $ext = pathinfo($request->File->getClientOriginalName(), PATHINFO_EXTENSION); // to get any extension
-            
-            $fileName = 'file-'.time().'-task'.$id.'.'.$ext;
-            
-            Task::where('id','=',$id)->update([
-                'attachment'    => $fileName,
-                'phase'         => '2',
-            ]);
-
-            $numOfTasks = DB::table('users')->select('number_of_tasks')->where('id','=',auth()->user()->id)->first();
-            $numOfTasks = $numOfTasks->number_of_tasks +1;
-            User::where('id','=',auth()->user()->id)->update([
-                'number_of_tasks'   => $numOfTasks,
-                'current_task'      => null,
-            ]);
-    
-            $request->File->move(public_path('attachments'),$fileName);   
-            
-            return redirect('task/'.Crypt::encrypt($id))->with('success','File uploaded successfuly');
-        }
-        
-        
+        return redirect()->route('tasks.show',$task->id);
     }
 
     /**

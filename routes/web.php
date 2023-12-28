@@ -3,11 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
-use App\Providers\RouteServiceProvider;
-use App\Http\Controllers\TaskController;
-use App\Http\Controllers\ChatController;
-use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\MessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +16,6 @@ use App\Http\Controllers\SocialController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('guest')->name('welcome');
 
 Route::get('/email/verify', function () {
     return view('auth.verify-email');
@@ -41,12 +34,14 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
+
+Route::resource('/message',MessageController::class)->middleware('auth:web,admin');
 
 Route::get('/redirect/{service}',[SocialController::class,'redirect']);
 
 Route::get('/callback/{service}',[SocialController::class,'callback']);
 
-require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php';

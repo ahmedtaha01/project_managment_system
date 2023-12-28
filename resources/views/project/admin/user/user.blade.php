@@ -21,9 +21,11 @@
                             <label class="mt-2 mb-1" for="">Number Of Tasks : </label> {{ $user['number_of_tasks'] }} <hr>
                             <label class="mt-2 mb-1" for="">Current Task : </label>
                             @if ($user['current_task'] != null)
-                                <a href="/task/{{ Crypt::encrypt($user['current_task']) }}"> Click here</a>  <hr>
+                                <a href="{{ route('tasks.show',$user->current_task) }}"> Click here</a>  <hr>
                             @else
-                                <p>No Task Currently</p>                                
+                                <div class="alert alert-warning" style="display: inline">
+                                    No Task Currently
+                                </div>
                             @endif
                         </div>
                     </div>

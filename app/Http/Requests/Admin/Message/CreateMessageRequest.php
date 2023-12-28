@@ -15,9 +15,9 @@ class CreateMessageRequest extends FormRequest
      */
     public function authorize()
     {
-        $projects = Project::where('admin_id',auth()->user()->id)->pluck('id')->toArray();
-        $task = Task::find($this->task_id);
-        return auth()->guard('admin')->check() && in_array($task->project_id,$projects);
+        // $projects = Project::where('admin_id',auth()->user()->id)->pluck('id')->toArray();
+        // $task = Task::find($this->task_id);
+        return auth()->check();
     }
 
     /**

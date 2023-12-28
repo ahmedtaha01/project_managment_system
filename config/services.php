@@ -25,27 +25,27 @@ return [
     ],
     
     'facebook' => [
-        'client_id' => env ( 'FB_CLIENT_ID' ),
-        'client_secret' => env ( 'FB_CLIENT_SECRET' ),
-        'redirect' => env ( 'FB_REDIRECT' )
+        'client_id' => env('FACEBOOK_APP_ID'),
+        'client_secret' => env('FACEBOOK_APP_SECRET'),
+        'redirect' => env('FACEBOOK_REDIRECT')
     ],
 
     'github' => [
-        'client_id' => env('GH_CLIENT_ID'),
-        'client_secret' => env('GH_CLIENT_SECRET'),
-        'redirect' => env('GH_REDIRECT'),
+        'client_id' => env('GITHUB_APP_ID'),
+        'client_secret' => env('GITHUB_APP_SECRET'),
+        'redirect' => env('GITHUB_REDIRECT'),
     ], 
     
     'google' => [
-        'client_id' => env('GO_CLIENT_ID'),
-        'client_secret' => env('GO_CLIENT_SECRET'),
-        'redirect' => env('GO_REDIRECT'),
+        'client_id' => env('GOOGLE_APP_ID'),
+        'client_secret' => env('GOOGLE_APP_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT'),
     ],
 
-    'twitter' => [
-        'client_id' => env('TW_CLIENT_ID'),
-        'client_secret' => env('TW_CLIENT_SECRET'),
-        'redirect' => env('TW_REDIRECT'),
+    'linkedin' => [
+        'client_id' => env('LINKEDIN_APP_ID'),
+        'client_secret' => env('LINKEDIN_APP_SECRET'),
+        'redirect' => env('LINKEDIN_REDIRECT'),
     ],
 
     'ses' => [

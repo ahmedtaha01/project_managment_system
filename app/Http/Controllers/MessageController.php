@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Requests\Admin\Message\CreateMessageRequest;
-use Illuminate\Http\Request;
 use App\Models\Message;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Admin\Message\CreateMessageRequest;
 
-class MessageController
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,14 +37,17 @@ class MessageController
      */
     public function store(CreateMessageRequest $request)
     {
+        
+        $messenger = "\App\Message\\".Auth::getDefaultDriver()."Message";
+        $type = (new $messenger)->messenger();
         Message::create([
             'content'           => $request->content,
             'task_id'           => $request->task_id,
             'messageable_id'    => auth()->user()->id,
-            'messageable_type'  => 'App\Models\Admin',
+            'messageable_type'  => 'App\Models\\'.$type,
         ]);
 
-        return redirect()->route('tasks.show',$request->task_id);
+        return redirect()->route('user.task',$request->task_id);
     }
 
     /**
